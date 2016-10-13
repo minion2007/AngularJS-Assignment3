@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+	<title>Filter-Sort Names</title>
+</head>
+<body>
+	<p>Click on the table header to sort names according to alphabetical order</p>
+	<div ng-app="myApp" ng-controller="namesctrl">
+		<table border="1" width="50%">
+		<tr>
+		<th ng-click="orderBy('name')">Name</th>
+		<th>City</th>
+		</tr>
+		<tr ng-repeat="x in names | orderBy:myOrder">
+		<td>{{x.name}}</td>
+		<td>{{x.city}}</td>
+		</tr>
+		</table>
+	</div>
+<script>
+	var app=angular.module("myApp",[]);
+	app.controller('namesctrl', function($scope){
+	$scope.names=[
+	{name:'Mike',city:'Zurich'},
+	{name:'Kai',city:'Denver'},
+	{name:'Sam',city:'Mumbai'},
+	{name:'Chetan',city:'Chennai'},
+	{name:'Ziva',city:'Montreal'},
+	{name:'Tyson',city:'Aurora'},
+	{name:'Gary',city:'Zenneth'},
+	{name:'Tim',city:'Boulder'},
+	{name:'Aadhi',city:'Denver'},
+	{name:'Aamir',city:'Allentown'},
+	{name:'Truman',city:'Duluth'}
+	];
+	$scope.orderBy=function(x){
+	$scope.myOrder=x;}
+});
+</script>
+</body>
+</html>
